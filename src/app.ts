@@ -1,5 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import cors from 'cors';
 import userRouter from './routers/user.router';
 import log from './utils/logger.util';
 import config from './config';
@@ -12,6 +13,7 @@ connect()
 
 const app: Application = express();
 
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
